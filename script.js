@@ -1,15 +1,32 @@
-//change to array of characters
+//Palindrome Checker Algorithm:
+//string to lower-case
 //filter out all non-alpha characters via regular expression
-//reverse string with for loop
+//change to array of characters
+//reverse array with forEach and unshift array methods
+//join reversed array into reversed string
 //compare original string to reversed string
-//return if there is a match or not
+//return if there is a match or not with ternary operator
 
 const inputField = document.getElementById("text-input");
 const checkBtn = document.getElementById("check-btn");
 
 const palindromeChecker = (inputText) => {
-  const charArray = inputText.replace(/[^A-Za-z]/gi, "").split("");
-  console.log(charArray);
+  console.log("inputText is... ", inputText);
+
+  const pureText = inputText.toLowerCase().replace(/[^A-Za-z]/gi, "");
+  console.log("pureText is... ", pureText);
+
+  let reversedArr = [];
+
+  reversedArr = pureText.split("").forEach((char) => reversedArr.unshift(char));
+  console.log("reversedArr is now... ", reversedArr);
+
+  const reversedStr = reversedArr.join("");
+  console.log("reversedStr is... ", reversedStr);
+
+  return pureText === reversedStr
+    ? `${inputText} is a palindrome`
+    : `${inputText} is not a palindrome`;
 };
 
 checkBtn.addEventListener("click", () => {
@@ -17,7 +34,8 @@ checkBtn.addEventListener("click", () => {
     alert("Please input a value");
   } else {
     let inputText = inputField.value;
-    palindromeChecker(inputText);
+    let result = palindromeChecker(inputText);
+    console.log("result text is...", result);
     inputField.value = "";
   }
 });
