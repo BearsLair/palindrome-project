@@ -13,12 +13,12 @@ const checkBtn = document.getElementById("check-btn");
 const palindromeChecker = (inputText) => {
   console.log("inputText is... ", inputText);
 
-  const pureText = inputText.toLowerCase().replace(/[^A-Za-z]/gi, "");
+  const pureText = inputText.toLowerCase().replace(/[^a-z]/g, "");
   console.log("pureText is... ", pureText);
 
   let reversedArr = [];
 
-  reversedArr = pureText.split("").forEach((char) => reversedArr.unshift(char));
+  pureText.split("").forEach((char) => reversedArr.unshift(char));
   console.log("reversedArr is now... ", reversedArr);
 
   const reversedStr = reversedArr.join("");
